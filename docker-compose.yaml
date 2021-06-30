@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  mongo_container:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - dbdata:/data/db
+    ports:
+      - "27017:27017"
+
+  node_container:
+    depends_on:
+      - mongo_container
+    build: .
+    container_name: api_node
+    env_file: ./.env
+    command: yarn dev
+    ports:
+      - "$PORT:$PORT"
+    volumes:
+      - ".:/source"
+      - node_modules:/source/node_modules
+    restart: always
+
+volumes:
+  dbdata: {}
+  node_modules: {}

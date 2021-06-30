@@ -1,0 +1,7 @@
+GET http://localhost:5678
+###
+POST http://localhost:5678/
+###
+PUT http://localhost:5678/60dcae08c3b4e80068c9e790
+###
+DELETE http://localhost:5678/60dcae08c3b4e80068c9e790
